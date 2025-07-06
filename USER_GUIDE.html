@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OrderDesk - User Guide</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; }
+        .section-header { background: linear-gradient(135deg, #007bff 0%, #0056b3 100%); color: white; padding: 20px; border-radius: 8px; margin: 30px 0 20px 0; }
+        .role-badge { font-size: 0.8rem; padding: 4px 8px; }
+        .step-box { background: #f8f9fa; border-left: 4px solid #007bff; padding: 15px; margin: 15px 0; }
+        .feature-card { border: none; box-shadow: 0 2px 4px rgba(0,0,0,0.1); transition: transform 0.2s; }
+        .feature-card:hover { transform: translateY(-2px); }
+        .screenshot-placeholder { background: #f8f9fa; border: 2px dashed #dee2e6; padding: 40px; text-align: center; border-radius: 8px; margin: 15px 0; }
+        .workflow-step { background: white; border: 1px solid #dee2e6; border-radius: 8px; padding: 20px; margin: 10px 0; position: relative; }
+        .workflow-step::before { content: attr(data-step); position: absolute; top: -10px; left: 20px; background: #007bff; color: white; border-radius: 50%; width: 25px; height: 25px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: bold; }
+        .tip-box { background: #e7f3ff; border: 1px solid #b8daff; padding: 15px; border-radius: 5px; margin: 15px 0; }
+        .warning-box { background: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; border-radius: 5px; margin: 15px 0; }
+    </style>
+</head>
+<body>
+    <div class="container my-5">
+        <!-- Header -->
+        <div class="text-center mb-5">
+            <h1 class="display-4 text-primary">
+                <i class="fas fa-book-open me-3"></i>OrderDesk User Guide
+            </h1>
+            <p class="lead">Complete instructions for using OrderDesk Order Management System</p>
+            <div class="alert alert-info">
+                <i class="fas fa-info-circle me-2"></i>
+                This guide covers all features and workflows for Super Admins, Admins, and Agents
+            </div>
+        </div>
+
+        <!-- Table of Contents -->
+        <section class="mb-5">
+            <h2><i class="fas fa-list text-primary me-2"></i>Table of Contents</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <h6>Getting Started</h6>
+                    <ul>
+                        <li><a href="#login">Login & First Steps</a></li>
+                        <li><a href="#roles">User Roles & Permissions</a></li>
+                        <li><a href="#navigation">Navigation & Interface</a></li>
+                    </ul>
+                    
+                    <h6>Super Admin Functions</h6>
+                    <ul>
+                        <li><a href="#user-management">User Management</a></li>
+                        <li><a href="#pricing-plans">Pricing Plans</a></li>
+                        <li><a href="#payment-tracking">Payment Tracking</a></li>
+                        <li><a href="#audit-logs">Audit Logs</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h6>Admin Functions</h6>
+                    <ul>
+                        <li><a href="#store-management">Store Management</a></li>
+                        <li><a href="#order-management">Order Management</a></li>
+                        <li><a href="#agent-management">Agent Management</a></li>
+                        <li><a href="#analytics">Analytics & Reports</a></li>
+                    </ul>
+                    
+                    <h6>Agent Functions</h6>
+                    <ul>
+                        <li><a href="#agent-dashboard">Agent Dashboard</a></li>
+                        <li><a href="#order-processing">Order Processing</a></li>
+                        <li><a href="#call-logging">Call Logging</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h6>Common Tasks</h6>
+                    <ul>
+                        <li><a href="#csv-upload">CSV Upload</a></li>
+                        <li><a href="#screenshot-upload">Screenshot Upload</a></li>
+                        <li><a href="#status-updates">Status Updates</a></li>
+                        <li><a href="#export-data">Export Data</a></li>
+                    </ul>
+                    
+                    <h6>Tips & Troubleshooting</h6>
+                    <ul>
+                        <li><a href="#best-practices">Best Practices</a></li>
+                        <li><a href="#common-issues">Common Issues</a></li>
+                        <li><a href="#keyboard-shortcuts">Keyboard Shortcuts</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Login & First Steps -->
+        <section id="login" class="mb-5">
+            <div class="section-header">
+                <h2><i class="fas fa-sign-in-alt me-2"></i>Login & First Steps</h2>
+                <p class="mb-0">How to access OrderDesk and get started</p>
+            </div>
+            
+            <h4>🔐 Logging In</h4>
+            <div class="step-box">
+                <strong>Step 1:</strong> Navigate to your OrderDesk URL<br>
+                <strong>Step 2:</strong> Click "Login" in the navigation<br>
+                <strong>Step 3:</strong> Enter your username/email and password<br>
+                <strong>Step 4:</strong> Click "Login" to access your dashboard
+            </div>
+
+            <div class="screenshot-placeholder">
+                <i class="fas fa-desktop fa-3x text-muted mb-3"></i>
+                <p class="text-muted">Screenshot: Login page with username and password fields</p>
+            </div>
+
+            <h4>🆕 Account Registration</h4>
+            <div class="warning-box">
+                <i class="fas fa-exclamation-triangle me-2"></i>
+                <strong>Important:</strong> All new account registrations require manual approval by the Super Admin
+            </div>
+
+            <div class="workflow-step" data-step="1">
+                <strong>Fill Registration Form</strong>
+                <p>Complete all required fields: username, email, full name, phone, and desired role (Admin or Agent)</p>
+            </div>
+
+            <div class="workflow-step" data-step="2">
+                <strong>Submit for Approval</strong>
+                <p>Your application will be sent to the Super Admin for review</p>
+            </div>
+
+            <div class="workflow-step" data-step="3">
+                <strong>Wait for Approval</strong>
+                <p>You'll receive notification once your account is approved and activated</p>
+            </div>
+
+            <h4>🏠 Dashboard Overview</h4>
+            <p>After logging in, you'll be redirected to your role-specific dashboard:</p>
+            <ul>
+                <li><span class="badge bg-primary role-badge">Super Admin</span> Full system overview with user management</li>
+                <li><span class="badge bg-success role-badge">Admin</span> Order management and team analytics</li>
+                <li><span class="badge bg-info role-badge">Agent</span> Assigned orders and call center tools</li>
+            </ul>
+        </section>
+
+        <!-- User Roles -->
+        <section id="roles" class="mb-5">
+            <div class="section-header">
+                <h2><i class="fas fa-users me-2"></i>User Roles & Permissions</h2>
+                <p class="mb-0">Understanding the three-tier role system</p>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card feature-card h-100">
+                        <div class="card-header bg-primary text-white">
+                            <h5><i class="fas fa-crown me-2"></i>Super Admin</h5>
+                        </div>
+                        <div class="card-body">
+                            <h6>Full System Control</h6>
+                            <ul class="small">
+                                <li>Approve/reject user registrations</li>
+                                <li>Manage pricing plans</li>
+                                <li>Track payments and invoices</li>
+                                <li>View system audit logs</li>
+                                <li>Create admin accounts</li>
+                                <li>System-wide oversight</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="card feature-card h-100">
+                        <div class="card-header bg-success text-white">
+                            <h5><i class="fas fa-user-tie me-2"></i>Admin</h5>
+                        </div>
+                        <div class="card-body">
+                            <h6>Business Management</h6>
+                            <ul class="small">
+                                <li>Manage stores and orders</li>
+                                <li>Upload and assign orders</li>
+                                <li>Oversee agent performance</li>
+                                <li>View analytics and reports</li>
+                                <li>Export order data</li>
+                                <li>Team coordination</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="card feature-card h-100">
+                        <div class="card-header bg-info text-white">
+                            <h5><i class="fas fa-headset me-2"></i>Agent</h5>
+                        </div>
+                        <div class="card-body">
+                            <h6>Order Processing</h6>
+                            <ul class="small">
+                                <li>View assigned orders only</li>
+                                <li>Update order status</li>
+                                <li>Log customer calls</li>
+                                <li>Upload proof screenshots</li>
+                                <li>Add order remarks</li>
+                                <li>Track personal performance</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Navigation -->
+        <section id="navigation" class="mb-5">
+            <div class="section-header">
+                <h2><i class="fas fa-compass me-2"></i>Navigation & Interface</h2>
+                <p class="mb-0">Understanding the OrderDesk interface</p>
+            </div>
+
+            <h4>🧭 Main Navigation</h4>
+            <div class="tip-box">
+                <strong>Navigation Tips:</strong>
+                <ul class="mb-0">
+                    <li>Brand logo always returns to dashboard</li>
+                    <li>User dropdown in top-right for logout</li>
+                    <li>Dark mode toggle available in navigation</li>
+                    <li>Active page highlighted in navigation</li>
+                </ul>
+            </div>
+
+            <h4>🌙 Dark Mode</h4>
+            <p>Toggle between light and dark themes using the moon/sun icon in the navigation. Your preference is saved automatically.</p>
+
+            <h4>📱 Mobile Responsiveness</h4>
+            <p>OrderDesk is fully responsive and works on all device sizes. On mobile devices, navigation collapses into a hamburger menu.</p>
+        </section>
+
+        <!-- User Management (Super Admin) -->
+        <section id="user-management" class="mb-5">
+            <div class="section-header">
+                <h2><i class="fas fa-user-check me-2"></i>User Management <span class="badge bg-light text-dark">Super Admin</span></h2>
+                <p class="mb-0">Managing user registrations and accounts</p>
+            </div>
+
+            <h4>✅ Approving New Users</h4>
+            <div class="workflow-step" data-step="1">
+                <strong>Review Pending Registrations</strong>
+                <p>Navigate to "User Approvals" to see pending requests with user details</p>
+            </div>
+
+            <div class="workflow-step" data-step="2">
+                <strong>Approve or Reject</strong>
+                <p>Click "Approve" to activate account or "Reject" to deny registration</p>
+            </div>
+
+            <div class="workflow-step" data-step="3">
+                <strong>Monitor User Activity</strong>
+                <p>Use audit logs to track user actions and system usage</p>
+            </div>
+
+            <h4>👥 Managing Existing Users</h4>
+            <ul>
+                <li><strong>Suspend Users:</strong> Temporarily disable access</li>
+                <li><strong>Reactivate Users:</strong> Restore suspended accounts</li>
+                <li><strong>Delete Users:</strong> Permanently remove accounts (cannot be undone)</li>
+                <li><strong>View User Details:</strong> See registration info and activity</li>
+            </ul>
+
+            <div class="warning-box">
+                <i class="fas fa-exclamation-triangle me-2"></i>
+                <strong>Warning:</strong> Deleting users with associated orders may cause data integrity issues. Consider suspension instead.
+            </div>
+        </section>
+
+        <!-- Pricing Plans (Super Admin) -->
+        <section id="pricing-plans" class="mb-5">
+            <div class="section-header">
+                <h2><i class="fas fa-tags me-2"></i>Pricing Plans <span class="badge bg-light text-dark">Super Admin</span></h2>
+                <p class="mb-0">Creating and managing subscription plans</p>
+            </div>
+
+            <h4>📋 Default Plans</h4>
+            <p>OrderDesk includes four standard plans:</p>
+            <ul>
+                <li><strong>Basic ($29/month):</strong> 3 agents, 500 orders</li>
+                <li><strong>Professional ($59/month):</strong> 10 agents, 2000 orders</li>
+                <li><strong>Enterprise ($99/month):</strong> Unlimited agents and orders</li>
+                <li><strong>Custom:</strong> Fully customizable pricing and limits</li>
+            </ul>
+
+            <h4>➕ Creating Custom Plans</h4>
+            <div class="step-box">
+                <strong>1.</strong> Click "Create New Plan" in Pricing Plans<br>
+                <strong>2.</strong> Set plan name, price, and limits<br>
+                <strong>3.</strong> Define features (comma-separated)<br>
+                <strong>4.</strong> Mark as custom if special configuration needed<br>
+                <strong>5.</strong> Save plan for assignment to users
+            </div>
+
+            <h4>✏️ Editing Plans</h4>
+            <p>Existing plans can be modified, but changes affect all users on that plan. Consider creating new plans for different pricing.</p>
+        </section>
+
+        <!-- Payment Tracking (Super Admin) -->
+        <section id="payment-tracking" class="mb-5">
+            <div class="section-header">
+                <h2><i class="fas fa-credit-card me-2"></i>Payment Tracking <span class="badge bg-light text-dark">Super Admin</span></h2>
+                <p class="mb-0">Manual payment processing and invoice management</p>
+            </div>
+
+            <h4>🧾 Creating Invoices</h4>
+            <div class="workflow-step" data-step="1">
+                <strong>Select Admin and Plan</strong>
+                <p>Choose the admin account and their subscription plan</p>
+            </div>
+
+            <div class="workflow-step" data-step="2">
+                <strong>Set Amount and Due Date</strong>
+                <p>Amount auto-fills from plan price, set due date (usually 30 days)</p>
+            </div>
+
+            <div class="workflow-step" data-step="3">
+                <strong>Generate Invoice</strong>
+                <p>System creates invoice with unique number and tracking</p>
+            </div>
+
+            <h4>💰 Confirming Payments</h4>
+            <div class="step-box">
+                <strong>1.</strong> Receive payment notification from admin<br>
+                <strong>2.</strong> Click "Confirm Payment" for pending invoice<br>
+                <strong>3.</strong> Enter payment date and method<br>
+                <strong>4.</strong> Add notes if needed<br>
+                <strong>5.</strong> Save to update payment status
+            </div>
+
+            <h4>📄 Invoice Features</h4>
+            <ul>
+                <li>PDF-ready invoice generation</li>
+                <li>Professional invoice layout</li>
+                <li>Payment tracking and history</li>
+                <li>Automatic invoice numbering</li>
+                <li>Payment status indicators</li>
+            </ul>
+        </section>
+
+        <!-- Store Management (Admin) -->
+        <section id="store-management" class="mb-5">
+            <div class="section-header">
+                <h2><i class="fas fa-store me-2"></i>Store Management <span class="badge bg-light text-dark">Admin</span></h2>
+                <p class="mb-0">Creating and organizing your stores</p>
+            </div>
+
+            <h4>🏪 Creating Stores</h4>
+            <div class="step-box">
+                <strong>1.</strong> Navigate to "Manage Stores"<br>
+                <strong>2.</strong> Click "Add New Store"<br>
+                <strong>3.</strong> Enter store name (required)<br>
+                <strong>4.</strong> Add description (optional)<br>
+                <strong>5.</strong> Save to create store
+            </div>
+
+            <h4>📊 Store Analytics</h4>
+            <p>Each store shows:</p>
+            <ul>
+                <li>Total orders processed</li>
+                <li>Delivery success rate</li>
+                <li>Performance over time</li>
+                <li>Agent assignments per store</li>
+            </ul>
+
+            <h4>🗑️ Store Deletion</h4>
+            <div class="warning-box">
+                <i class="fas fa-exclamation-triangle me-2"></i>
+                <strong>Important:</strong> Stores with existing orders cannot be deleted. Archive or reassign orders first.
+            </div>
+        </section>
+
+        <!-- Order Management (Admin) -->
+        <section id="order-management" class="mb-5">
+            <div class="section-header">
+                <h2><i class="fas fa-shopping-bag me-2"></i>Order Management <span class="badge bg-light text-dark">Admin</span></h2>
+                <p class="mb-0">Creating, uploading, and managing orders</p>
+            </div>
+
+            <h4>📤 Bulk CSV Upload</h4>
+            <div class="workflow-step" data-step="1">
+                <strong>Prepare CSV File</strong>
+                <p>Use demo_orders.csv as template with columns: Order ID, Customer Name, Phone, City, Product Name, Price</p>
+            </div>
+
+            <div class="workflow-step" data-step="2">
+                <strong>Upload File</strong>
+                <p>Navigate to "Upload Orders", select CSV file, choose store (optional)</p>
+            </div>
+
+            <div class="workflow-step" data-step="3">
+                <strong>Review Results</strong>
+                <p>System shows upload summary with any errors or duplicates</p>
+            </div>
+
+            <h4>✏️ Manual Order Creation</h4>
+            <p>For individual orders, use the manual creation form:</p>
+            <ul>
+                <li>Order ID (must be unique)</li>
+                <li>Customer details (name, phone, city)</li>
+                <li>Product information (name, price)</li>
+                <li>Store assignment (optional)</li>
+                <li>Agent assignment (optional)</li>
+            </ul>
+
+            <h4>🔍 Order Filtering</h4>
+            <div class="tip-box">
+                <strong>Available Filters:</strong>
+                <ul class="mb-0">
+                    <li>Status (New, Called, Confirmed, etc.)</li>
+                    <li>Store assignment</li>
+                    <li>Agent assignment</li>
+                    <li>Date range</li>
+                    <li>Search by order ID, name, or phone</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Agent Dashboard -->
+        <section id="agent-dashboard" class="mb-5">
+            <div class="section-header">
+                <h2><i class="fas fa-tachometer-alt me-2"></i>Agent Dashboard <span class="badge bg-light text-dark">Agent</span></h2>
+                <p class="mb-0">Managing your assigned orders efficiently</p>
+            </div>
+
+            <h4>📋 Dashboard Overview</h4>
+            <p>Your dashboard shows:</p>
+            <div class="row">
+                <div class="col-md-6">
+                    <ul>
+                        <li>Total assigned orders</li>
+                        <li>New orders requiring attention</li>
+                        <li>Orders in progress</li>
+                        <li>Completed orders</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <ul>
+                        <li>Today's call count</li>
+                        <li>Success rate percentage</li>
+                        <li>Performance indicators</li>
+                        <li>Recent order activity</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h4>🎯 Call Center Panel</h4>
+            <p>Quick access buttons for:</p>
+            <ul>
+                <li><strong>New Orders to Call:</strong> Orders requiring initial contact</li>
+                <li><strong>Follow-up Calls:</strong> Orders needing additional contact</li>
+                <li><strong>Confirmed Orders:</strong> Orders ready for processing</li>
+            </ul>
+
+            <h4>📈 Performance Tracking</h4>
+            <p>Monitor your daily and overall performance with visual indicators showing call volume and success rates.</p>
+        </section>
+
+        <!-- Order Processing -->
+        <section id="order-processing" class="mb-5">
+            <div class="section-header">
+                <h2><i class="fas fa-cogs me-2"></i>Order Processing <span class="badge bg-light text-dark">Agent/Admin</span></h2>
+                <p class="mb-0">Complete order lifecycle management</p>
+            </div>
+
+            <h4>🔄 Order Status Workflow</h4>
+            <div class="workflow-step" data-step="1">
+                <strong>New</strong>
+                <p>Order uploaded, awaiting first contact</p>
+            </div>
+
+            <div class="workflow-step" data-step="2">
+                <strong>Called</strong>
+                <p>Customer contacted, information gathered</p>
+            </div>
+
+            <div class="workflow-step" data-step="3">
+                <strong>Confirmed</strong>
+                <p>Order confirmed by customer, ready for shipping</p>
+            </div>
+
+            <div class="workflow-step" data-step="4">
+                <strong>In Transit</strong>
+                <p>Order shipped, tracking information available</p>
+            </div>
+
+            <div class="workflow-step" data-step="5">
+                <strong>Delivered / Failed</strong>
+                <p>Final status - successful delivery or failed attempt</p>
+            </div>
+
+            <h4>📝 Updating Order Status</h4>
+            <div class="step-box">
+                <strong>1.</strong> Click order ID or "Edit" button<br>
+                <strong>2.</strong> Select new status from dropdown<br>
+                <strong>3.</strong> Add remarks explaining status change<br>
+                <strong>4.</strong> Save changes to update order<br>
+                <strong>5.</strong> System logs change with timestamp
+            </div>
+
+            <h4>💬 Adding Remarks</h4>
+            <p>Always add meaningful remarks when updating status:</p>
+            <ul>
+                <li>"Customer requested delivery after 6 PM"</li>
+                <li>"Wrong address provided, getting correction"</li>
+                <li>"Customer confirmed order and payment"</li>
+                <li>"Delivery attempted, customer not home"</li>
+            </ul>
+        </section>
+
+        <!-- CSV Upload -->
+        <section id="csv-upload" class="mb-5">
+            <div class="section-header">
+                <h2><i class="fas fa-file-csv me-2"></i>CSV Upload Guide <span class="badge bg-light text-dark">Admin</span></h2>
+                <p class="mb-0">Bulk order import instructions</p>
+            </div>
+
+            <h4>📋 CSV Format Requirements</h4>
+            <div class="step-box">
+                <strong>Required Columns (in order):</strong><br>
+                1. Order ID<br>
+                2. Customer Name<br>
+                3. Customer Phone<br>
+                4. Customer City<br>
+                5. Product Name<br>
+                6. Product Price
+            </div>
+
+            <h4>✅ CSV Best Practices</h4>
+            <ul>
+                <li>Use demo_orders.csv as template</li>
+                <li>Ensure unique Order IDs</li>
+                <li>Format phone numbers consistently</li>
+                <li>Use decimal format for prices (99.99)</li>
+                <li>Avoid special characters in names</li>
+                <li>Save as UTF-8 encoded CSV</li>
+            </ul>
+
+            <h4>❌ Common CSV Errors</h4>
+            <div class="warning-box">
+                <strong>Avoid these mistakes:</strong>
+                <ul class="mb-0">
+                    <li>Missing required columns</li>
+                    <li>Duplicate Order IDs</li>
+                    <li>Empty rows in CSV</li>
+                    <li>Incorrect price formatting</li>
+                    <li>Special characters causing parsing errors</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Screenshot Upload -->
+        <section id="screenshot-upload" class="mb-5">
+            <div class="section-header">
+                <h2><i class="fas fa-camera me-2"></i>Screenshot Upload <span class="badge bg-light text-dark">Agent/Admin</span></h2>
+                <p class="mb-0">Uploading proof of calls and delivery</p>
+            </div>
+
+            <h4>📸 Uploading Screenshots</h4>
+            <div class="workflow-step" data-step="1">
+                <strong>Access Order Details</strong>
+                <p>Navigate to specific order that needs screenshot proof</p>
+            </div>
+
+            <div class="workflow-step" data-step="2">
+                <strong>Click Upload Screenshot</strong>
+                <p>Use the "Upload Screenshot" button in order details</p>
+            </div>
+
+            <div class="workflow-step" data-step="3">
+                <strong>Select Image File</strong>
+                <p>Choose JPEG or PNG file from your device</p>
+            </div>
+
+            <div class="workflow-step" data-step="4">
+                <strong>Upload and Verify</strong>
+                <p>File uploads and appears in order history</p>
+            </div>
+
+            <h4>📋 File Requirements</h4>
+            <ul>
+                <li><strong>Formats:</strong> JPEG, JPG, PNG only</li>
+                <li><strong>Size Limit:</strong> 5MB maximum</li>
+                <li><strong>Resolution:</strong> Clear and readable</li>
+                <li><strong>Content:</strong> Relevant to order status</li>
+            </ul>
+
+            <h4>💡 Screenshot Tips</h4>
+            <div class="tip-box">
+                <strong>Best Practices:</strong>
+                <ul class="mb-0">
+                    <li>Capture clear call logs or delivery confirmations</li>
+                    <li>Include timestamps when possible</li>
+                    <li>Ensure customer privacy (blur sensitive info)</li>
+                    <li>Use descriptive filenames</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Analytics -->
+        <section id="analytics" class="mb-5">
+            <div class="section-header">
+                <h2><i class="fas fa-chart-line me-2"></i>Analytics & Reports <span class="badge bg-light text-dark">Admin</span></h2>
+                <p class="mb-0">Understanding your business performance</p>
+            </div>
+
+            <h4>📊 Store Analytics</h4>
+            <div class="row">
+                <div class="col-md-6">
+                    <h6>Key Metrics</h6>
+                    <ul>
+                        <li>Total orders processed</li>
+                        <li>Delivered order count</li>
+                        <li>Total revenue generated</li>
+                        <li>Success rate percentage</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <h6>Visual Charts</h6>
+                    <ul>
+                        <li>Order status distribution</li>
+                        <li>Daily order trends</li>
+                        <li>Top-performing products</li>
+                        <li>Agent performance comparison</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h4>👥 Agent Performance</h4>
+            <p>Track individual agent metrics:</p>
+            <ul>
+                <li>Orders assigned vs completed</li>
+                <li>Call volume and frequency</li>
+                <li>Success rate calculations</li>
+                <li>Average response time</li>
+                <li>Performance scoring system</li>
+            </ul>
+
+            <h4>📈 Using Analytics for Improvement</h4>
+            <div class="tip-box">
+                <strong>Actionable Insights:</strong>
+                <ul class="mb-0">
+                    <li>Identify top-performing agents for training others</li>
+                    <li>Spot problem areas in order processing</li>
+                    <li>Optimize product offerings based on success rates</li>
+                    <li>Adjust staffing based on order volume trends</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Export Data -->
+        <section id="export-data" class="mb-5">
+            <div class="section-header">
+                <h2><i class="fas fa-download me-2"></i>Export Data <span class="badge bg-light text-dark">Admin/Agent</span></h2>
+                <p class="mb-0">Exporting orders and reports</p>
+            </div>
+
+            <h4>📤 Export Options</h4>
+            <div class="row">
+                <div class="col-md-6">
+                    <h6>CSV Export</h6>
+                    <ul>
+                        <li>Compatible with Excel and Google Sheets</li>
+                        <li>Smaller file size</li>
+                        <li>UTF-8 encoding support</li>
+                        <li>Easy to import into other systems</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <h6>Excel Export</h6>
+                    <ul>
+                        <li>Native Excel file format</li>
+                        <li>Formatted tables with borders</li>
+                        <li>Ready for immediate use</li>
+                        <li>Professional appearance</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h4>🔧 Export Configuration</h4>
+            <div class="step-box">
+                <strong>1.</strong> Navigate to "Export Orders"<br>
+                <strong>2.</strong> Choose export format (CSV or Excel)<br>
+                <strong>3.</strong> Set filters (status, date range, store, agent)<br>
+                <strong>4.</strong> Click "Export Orders" to download<br>
+                <strong>5.</strong> File downloads automatically
+            </div>
+
+            <h4>📋 Export Data Included</h4>
+            <ul>
+                <li>Order ID and customer information</li>
+                <li>Product details and pricing</li>
+                <li>Order status and timestamps</li>
+                <li>Store and agent assignments</li>
+                <li>Remarks and notes</li>
+                <li>Creation and update dates</li>
+            </ul>
+        </section>
+
+        <!-- Best Practices -->
+        <section id="best-practices" class="mb-5">
+            <div class="section-header">
+                <h2><i class="fas fa-star me-2"></i>Best Practices</h2>
+                <p class="mb-0">Tips for optimal OrderDesk usage</p>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>🔐 Security</h5>
+                    <ul>
+                        <li>Change default passwords immediately</li>
+                        <li>Use strong, unique passwords</li>
+                        <li>Log out when finished</li>
+                        <li>Don't share login credentials</li>
+                        <li>Report suspicious activity</li>
+                    </ul>
+                </div>
+                
+                <div class="col-md-4">
+                    <h5>📊 Data Management</h5>
+                    <ul>
+                        <li>Regular data backups</li>
+                        <li>Clean old screenshots periodically</li>
+                        <li>Archive completed orders</li>
+                        <li>Validate CSV data before upload</li>
+                        <li>Use consistent naming conventions</li>
+                    </ul>
+                </div>
+                
+                <div class="col-md-4">
+                    <h5>⚡ Performance</h5>
+                    <ul>
+                        <li>Update order status promptly</li>
+                        <li>Add meaningful remarks</li>
+                        <li>Use filters for large order lists</li>
+                        <li>Optimize screenshot file sizes</li>
+                        <li>Regular system cleanup</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h4>📞 Customer Communication</h4>
+            <div class="tip-box">
+                <strong>Professional Call Handling:</strong>
+                <ul class="mb-0">
+                    <li>Always identify yourself and company</li>
+                    <li>Confirm customer details before proceeding</li>
+                    <li>Take detailed notes in order remarks</li>
+                    <li>Follow up as promised</li>
+                    <li>Upload proof of important conversations</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Common Issues -->
+        <section id="common-issues" class="mb-5">
+            <div class="section-header">
+                <h2><i class="fas fa-question-circle me-2"></i>Common Issues & Solutions</h2>
+                <p class="mb-0">Troubleshooting frequent problems</p>
+            </div>
+
+            <div class="accordion" id="issuesAccordion">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#issue1">
+                            Can't Upload Screenshots
+                        </button>
+                    </h2>
+                    <div id="issue1" class="accordion-collapse collapse" data-bs-parent="#issuesAccordion">
+                        <div class="accordion-body">
+                            <strong>Solutions:</strong>
+                            <ul>
+                                <li>Check file format (only JPEG/PNG allowed)</li>
+                                <li>Verify file size is under 5MB</li>
+                                <li>Try refreshing the page</li>
+                                <li>Contact admin if persistent</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#issue2">
+                            CSV Upload Fails
+                        </button>
+                    </h2>
+                    <div id="issue2" class="accordion-collapse collapse" data-bs-parent="#issuesAccordion">
+                        <div class="accordion-body">
+                            <strong>Solutions:</strong>
+                            <ul>
+                                <li>Use demo_orders.csv as template</li>
+                                <li>Check for duplicate Order IDs</li>
+                                <li>Ensure all required columns present</li>
+                                <li>Save as UTF-8 encoded CSV</li>
+                                <li>Remove empty rows</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#issue3">
+                            Charts Not Loading
+                        </button>
+                    </h2>
+                    <div id="issue3" class="accordion-collapse collapse" data-bs-parent="#issuesAccordion">
+                        <div class="accordion-body">
+                            <strong>Solutions:</strong>
+                            <ul>
+                                <li>Check internet connection</li>
+                                <li>Disable ad blockers temporarily</li>
+                                <li>Clear browser cache</li>
+                                <li>Try different browser</li>
+                                <li>Contact support if persistent</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#issue4">
+                            Login Issues
+                        </button>
+                    </h2>
+                    <div id="issue4" class="accordion-collapse collapse" data-bs-parent="#issuesAccordion">
+                        <div class="accordion-body">
+                            <strong>Solutions:</strong>
+                            <ul>
+                                <li>Verify username and password spelling</li>
+                                <li>Check if account is approved (for new users)</li>
+                                <li>Clear browser cookies</li>
+                                <li>Try incognito/private browsing</li>
+                                <li>Contact admin for account status</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Keyboard Shortcuts -->
+        <section id="keyboard-shortcuts" class="mb-5">
+            <div class="section-header">
+                <h2><i class="fas fa-keyboard me-2"></i>Keyboard Shortcuts</h2>
+                <p class="mb-0">Speed up your workflow with shortcuts</p>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>⌨️ General Navigation</h5>
+                    <div class="code-block">
+                        <strong>Alt + D:</strong> Go to Dashboard<br>
+                        <strong>Alt + O:</strong> Manage Orders<br>
+                        <strong>Alt + U:</strong> Upload Orders<br>
+                        <strong>Alt + E:</strong> Export Orders<br>
+                        <strong>Alt + L:</strong> Logout
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <h5>⌨️ Order Management</h5>
+                    <div class="code-block">
+                        <strong>Ctrl + F:</strong> Search Orders<br>
+                        <strong>Ctrl + N:</strong> New Order<br>
+                        <strong>Ctrl + S:</strong> Save Changes<br>
+                        <strong>Esc:</strong> Close Modal<br>
+                        <strong>Enter:</strong> Submit Form
+                    </div>
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <i class="fas fa-lightbulb me-2"></i>
+                <strong>Pro Tip:</strong> These shortcuts work on most pages and can significantly speed up your daily workflow.
+            </div>
+        </section>
+
+        <!-- Support -->
+        <section class="mb-5">
+            <div class="section-header">
+                <h2><i class="fas fa-life-ring me-2"></i>Getting Help & Support</h2>
+                <p class="mb-0">Resources when you need assistance</p>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>📚 Documentation</h5>
+                    <ul>
+                        <li><strong>README.html:</strong> Technical overview</li>
+                        <li><strong>DEPLOY_GUIDE.html:</strong> Setup instructions</li>
+                        <li><strong>USER_GUIDE.html:</strong> This complete guide</li>
+                        <li><strong>Demo Files:</strong> Sample CSV for testing</li>
+                    </ul>
+                </div>
+                
+                <div class="col-md-6">
+                    <h5>🔧 Self-Help</h5>
+                    <ul>
+                        <li>Check common issues section</li>
+                        <li>Review audit logs for problems</li>
+                        <li>Test with demo accounts</li>
+                        <li>Verify browser compatibility</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <i class="fas fa-exclamation-triangle me-2"></i>
+                <strong>Important:</strong> For technical server issues, contact your hosting provider. For application-specific problems, refer to this guide or contact your system administrator.
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="text-center py-4 border-top">
+            <p class="text-muted mb-0">
+                <strong>OrderDesk User Guide</strong> - Complete instructions for all user roles<br>
+                <small>Keep this guide handy for reference and share with your team members</small>
+            </p>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

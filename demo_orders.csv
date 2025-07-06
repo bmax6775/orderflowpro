@@ -1,0 +1,11 @@
+Order ID,Customer Name,Customer Phone,Customer City,Product Name,Product Price,Order Status,Order Date
+SH-2025-001,John Smith,+1-555-0101,New York,iPhone 15 Pro Max 256GB,1199.99,pending,2025-01-15
+SH-2025-002,Sarah Johnson,+1-555-0102,Los Angeles,Samsung Galaxy S24 Ultra,1199.99,processing,2025-01-16
+SH-2025-003,Michael Brown,+1-555-0103,Chicago,MacBook Air M3 15-inch,1299.00,shipped,2025-01-17
+SH-2025-004,Emily Davis,+1-555-0104,Houston,iPad Pro 13-inch M4,1199.00,delivered,2025-01-18
+SH-2025-005,David Wilson,+1-555-0105,Phoenix,Apple Watch Ultra 2,799.00,pending,2025-01-19
+SH-2025-006,Jennifer Taylor,+1-555-0106,Philadelphia,AirPods Pro 2nd Gen,249.00,processing,2025-01-20
+SH-2025-007,Robert Anderson,+1-555-0107,San Antonio,Sony WH-1000XM5,399.99,shipped,2025-01-21
+SH-2025-008,Lisa Martinez,+1-555-0108,San Diego,Nintendo Switch OLED,349.99,delivered,2025-01-22
+SH-2025-009,Kevin Thompson,+1-555-0109,Dallas,PlayStation 5 Console,499.99,pending,2025-01-23
+SH-2025-010,Amanda White,+1-555-0110,San Jose,Xbox Series X,499.99,processing,2025-01-24

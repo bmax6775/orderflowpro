@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OrderDesk - Deployment Guide</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; }
+        .step-number { background: #007bff; color: white; border-radius: 50%; width: 30px; height: 30px; display: inline-flex; align-items: center; justify-content: center; font-weight: bold; margin-right: 10px; }
+        .code-block { background-color: #f8f9fa; padding: 15px; border-radius: 5px; border-left: 4px solid #007bff; font-family: 'Courier New', monospace; }
+        .warning-box { background-color: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; border-radius: 5px; }
+        .success-box { background-color: #d4edda; border: 1px solid #c3e6cb; padding: 15px; border-radius: 5px; }
+        .info-box { background-color: #d1ecf1; border: 1px solid #bee5eb; padding: 15px; border-radius: 5px; }
+        .hosting-logo { max-width: 150px; height: auto; margin: 10px; }
+        .screenshot-placeholder { background: #f8f9fa; border: 2px dashed #dee2e6; padding: 40px; text-align: center; border-radius: 8px; margin: 15px 0; }
+    </style>
+</head>
+<body>
+    <div class="container my-5">
+        <!-- Header -->
+        <div class="text-center mb-5">
+            <h1 class="display-4 text-primary">
+                <i class="fas fa-cloud-upload-alt me-3"></i>OrderDesk Deployment Guide
+            </h1>
+            <p class="lead">Complete step-by-step instructions for deploying OrderDesk on shared hosting</p>
+            <div class="alert alert-info">
+                <i class="fas fa-info-circle me-2"></i>
+                This guide covers deployment on popular shared hosting providers like Namecheap, HostGator, Bluehost, and others with cPanel access.
+            </div>
+        </div>
+
+        <!-- Table of Contents -->
+        <section class="mb-5">
+            <h2><i class="fas fa-list text-primary me-2"></i>Table of Contents</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <ol>
+                        <li><a href="#prerequisites">Prerequisites & Requirements</a></li>
+                        <li><a href="#hosting-setup">Hosting Account Setup</a></li>
+                        <li><a href="#file-upload">File Upload Process</a></li>
+                        <li><a href="#database-setup">Database Configuration</a></li>
+                        <li><a href="#configuration">Application Configuration</a></li>
+                    </ol>
+                </div>
+                <div class="col-md-6">
+                    <ol start="6">
+                        <li><a href="#testing">Testing & Verification</a></li>
+                        <li><a href="#ssl-setup">SSL Certificate Setup</a></li>
+                        <li><a href="#maintenance">Maintenance & Updates</a></li>
+                        <li><a href="#troubleshooting">Troubleshooting</a></li>
+                        <li><a href="#optimization">Performance Optimization</a></li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <!-- Prerequisites -->
+        <section id="prerequisites" class="mb-5">
+            <h2><span class="step-number">1</span>Prerequisites & Requirements</h2>
+            
+            <h4>✅ Hosting Requirements</h4>
+            <div class="info-box">
+                <strong>Minimum Specifications:</strong>
+                <ul class="mb-0">
+                    <li><strong>PHP:</strong> Version 7.4 or higher (8.0+ recommended)</li>
+                    <li><strong>MySQL:</strong> Version 5.7+ or MariaDB 10.2+</li>
+                    <li><strong>Storage:</strong> 100MB minimum (500MB recommended)</li>
+                    <li><strong>Memory:</strong> 128MB PHP memory limit</li>
+                    <li><strong>Control Panel:</strong> cPanel or similar with phpMyAdmin</li>
+                </ul>
+            </div>
+
+            <h4 class="mt-4">🏢 Recommended Hosting Providers</h4>
+            <div class="row text-center">
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <i class="fas fa-server fa-2x text-primary mb-2"></i>
+                            <h6>Namecheap</h6>
+                            <small>Stellar Plus or above</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <i class="fas fa-server fa-2x text-success mb-2"></i>
+                            <h6>HostGator</h6>
+                            <small>Baby Plan or above</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <i class="fas fa-server fa-2x text-info mb-2"></i>
+                            <h6>Bluehost</h6>
+                            <small>Plus Plan or above</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <i class="fas fa-server fa-2x text-warning mb-2"></i>
+                            <h6>SiteGround</h6>
+                            <small>GrowBig or above</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h4 class="mt-4">📋 What You'll Need</h4>
+            <ul>
+                <li>✅ OrderDesk source files (complete package)</li>
+                <li>✅ Hosting account with cPanel access</li>
+                <li>✅ Domain name (primary or subdomain)</li>
+                <li>✅ FTP client (optional - FileZilla recommended)</li>
+                <li>✅ Text editor for configuration (Notepad++, VS Code)</li>
+            </ul>
+        </section>
+
+        <!-- Hosting Setup -->
+        <section id="hosting-setup" class="mb-5">
+            <h2><span class="step-number">2</span>Hosting Account Setup</h2>
+            
+            <h4>🔐 Accessing cPanel</h4>
+            <div class="code-block">
+                <strong>cPanel URL Format:</strong><br>
+                https://yourdomain.com/cpanel<br>
+                https://yourdomain.com:2083<br>
+                https://cpanel.yourdomain.com
+            </div>
+
+            <div class="screenshot-placeholder">
+                <i class="fas fa-image fa-3x text-muted mb-3"></i>
+                <p class="text-muted">Screenshot: cPanel login page</p>
+            </div>
+
+            <h4>📁 Domain Configuration</h4>
+            <div class="alert alert-warning">
+                <i class="fas fa-exclamation-triangle me-2"></i>
+                <strong>Important:</strong> Decide whether to install OrderDesk on your main domain (yoursite.com) or a subdomain (orderdesk.yoursite.com).
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <h6>Main Domain Installation</h6>
+                    <ul>
+                        <li>Files go to <code>/public_html/</code></li>
+                        <li>Access via <code>https://yourdomain.com</code></li>
+                        <li>Good for dedicated order management sites</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <h6>Subdomain Installation</h6>
+                    <ul>
+                        <li>Create subdomain in cPanel first</li>
+                        <li>Files go to <code>/public_html/subdomain/</code></li>
+                        <li>Access via <code>https://subdomain.yourdomain.com</code></li>
+                        <li>Good for existing websites</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- File Upload -->
+        <section id="file-upload" class="mb-5">
+            <h2><span class="step-number">3</span>File Upload Process</h2>
+            
+            <h4>📤 Method 1: cPanel File Manager (Recommended)</h4>
+            <div class="warning-box">
+                <strong>Step-by-step process:</strong>
+            </div>
+            
+            <ol>
+                <li>
+                    <strong>Access File Manager</strong>
+                    <ul>
+                        <li>Log into cPanel</li>
+                        <li>Find "File Manager" under "Files" section</li>
+                        <li>Navigate to <code>public_html</code> directory</li>
+                    </ul>
+                </li>
+                
+                <li>
+                    <strong>Create Project Folder (Optional)</strong>
+                    <div class="code-block">
+                        # For subdirectory installation
+                        Create new folder: orderdesk/
+                    </div>
+                </li>
+                
+                <li>
+                    <strong>Upload Source Files</strong>
+                    <ul>
+                        <li>Click "Upload" button in File Manager</li>
+                        <li>Select all OrderDesk files or upload as ZIP</li>
+                        <li>Wait for upload completion</li>
+                        <li>Extract ZIP file if uploaded as archive</li>
+                    </ul>
+                </li>
+                
+                <li>
+                    <strong>Set Permissions</strong>
+                    <div class="code-block">
+                        uploads/ folder: 755 or 775
+                        uploads/screenshots/ folder: 755 or 775
+                        config.php: 644
+                        All PHP files: 644
+                    </div>
+                </li>
+            </ol>
+
+            <div class="screenshot-placeholder">
+                <i class="fas fa-folder-open fa-3x text-muted mb-3"></i>
+                <p class="text-muted">Screenshot: cPanel File Manager with uploaded OrderDesk files</p>
+            </div>
+
+            <h4 class="mt-4">📤 Method 2: FTP Upload</h4>
+            <div class="info-box">
+                <strong>FTP Settings (from cPanel):</strong>
+                <div class="code-block mt-2">
+                    Host: ftp.yourdomain.com or your server IP<br>
+                    Username: your cPanel username<br>
+                    Password: your cPanel password<br>
+                    Port: 21 (or 22 for SFTP)
+                </div>
+            </div>
+
+            <ol>
+                <li>Download and install FileZilla FTP client</li>
+                <li>Connect using your hosting FTP credentials</li>
+                <li>Navigate to <code>/public_html/</code> on remote server</li>
+                <li>Upload all OrderDesk files to the directory</li>
+                <li>Set folder permissions using FTP client</li>
+            </ol>
+        </section>
+
+        <!-- Database Setup -->
+        <section id="database-setup" class="mb-5">
+            <h2><span class="step-number">4</span>Database Configuration</h2>
+            
+            <h4>🗄️ Creating MySQL Database</h4>
+            <div class="warning-box">
+                <i class="fas fa-exclamation-triangle me-2"></i>
+                <strong>Note:</strong> Database names are usually prefixed with your cPanel username (e.g., username_orderdesk)
+            </div>
+
+            <ol>
+                <li>
+                    <strong>Create Database</strong>
+                    <ul>
+                        <li>In cPanel, find "MySQL Databases"</li>
+                        <li>Enter database name: <code>orderdesk</code></li>
+                        <li>Click "Create Database"</li>
+                        <li>Note the full database name (with prefix)</li>
+                    </ul>
+                </li>
+                
+                <li>
+                    <strong>Create Database User</strong>
+                    <ul>
+                        <li>In "MySQL Users" section</li>
+                        <li>Username: <code>orderdesk_user</code></li>
+                        <li>Generate strong password (save it!)</li>
+                        <li>Click "Create User"</li>
+                    </ul>
+                </li>
+                
+                <li>
+                    <strong>Assign User to Database</strong>
+                    <ul>
+                        <li>In "Add User to Database" section</li>
+                        <li>Select user and database</li>
+                        <li>Grant "ALL PRIVILEGES"</li>
+                        <li>Click "Make Changes"</li>
+                    </ul>
+                </li>
+            </ol>
+
+            <div class="screenshot-placeholder">
+                <i class="fas fa-database fa-3x text-muted mb-3"></i>
+                <p class="text-muted">Screenshot: cPanel MySQL Databases interface</p>
+            </div>
+
+            <h4>📥 Importing Database Schema</h4>
+            <ol>
+                <li>
+                    <strong>Access phpMyAdmin</strong>
+                    <ul>
+                        <li>Find "phpMyAdmin" in cPanel</li>
+                        <li>Select your OrderDesk database</li>
+                    </ul>
+                </li>
+                
+                <li>
+                    <strong>Import database.sql</strong>
+                    <ul>
+                        <li>Click "Import" tab</li>
+                        <li>Choose <code>database.sql</code> file</li>
+                        <li>Set character set to "utf8_general_ci"</li>
+                        <li>Click "Go" to import</li>
+                    </ul>
+                </li>
+                
+                <li>
+                    <strong>Verify Import</strong>
+                    <ul>
+                        <li>Check that all tables are created</li>
+                        <li>Verify demo data is imported</li>
+                        <li>Should see: users, orders, pricing_plans, etc.</li>
+                    </ul>
+                </li>
+            </ol>
+
+            <div class="success-box">
+                <i class="fas fa-check-circle me-2"></i>
+                <strong>Success:</strong> You should see 11 tables created with demo data including Super Admin account.
+            </div>
+        </section>
+
+        <!-- Configuration -->
+        <section id="configuration" class="mb-5">
+            <h2><span class="step-number">5</span>Application Configuration</h2>
+            
+            <h4>⚙️ Updating config.php</h4>
+            <div class="warning-box">
+                <i class="fas fa-exclamation-triangle me-2"></i>
+                <strong>Critical Step:</strong> This file contains sensitive database credentials. Keep it secure!
+            </div>
+
+            <ol>
+                <li>
+                    <strong>Edit config.php</strong>
+                    <ul>
+                        <li>Open config.php in File Manager editor</li>
+                        <li>Or download, edit locally, and re-upload</li>
+                    </ul>
+                </li>
+                
+                <li>
+                    <strong>Update Database Settings</strong>
+                    <div class="code-block">
+<pre>// Replace these values with your hosting details
+$host = 'localhost';                    // Usually 'localhost'
+$dbname = 'yourusername_orderdesk';     // Your full database name
+$username = 'yourusername_orderdesk_user'; // Your database user
+$password = 'your_database_password';   // Your database password</pre>
+                    </div>
+                </li>
+                
+                <li>
+                    <strong>Environment Variables (Optional)</strong>
+                    <div class="code-block">
+<pre>// For enhanced security, you can use environment variables
+$host = getenv('DB_HOST') ?: 'localhost';
+$dbname = getenv('DB_NAME') ?: 'yourusername_orderdesk';
+$username = getenv('DB_USER') ?: 'yourusername_orderdesk_user';
+$password = getenv('DB_PASS') ?: 'your_database_password';</pre>
+                    </div>
+                </li>
+            </ol>
+
+            <h4 class="mt-4">📁 Folder Permissions</h4>
+            <div class="info-box">
+                <strong>Required Permissions:</strong>
+                <div class="code-block mt-2">
+                    uploads/ → 755 (or 775 if 755 doesn't work)<br>
+                    uploads/screenshots/ → 755 (or 775)<br>
+                    config.php → 644<br>
+                    All other PHP files → 644
+                </div>
+            </div>
+
+            <h4 class="mt-4">🔧 PHP Settings (if needed)</h4>
+            <p>Some hosting providers may require PHP.ini adjustments:</p>
+            <div class="code-block">
+<pre># Create .htaccess file in root directory if needed
+php_value upload_max_filesize 10M
+php_value post_max_size 10M
+php_value max_execution_time 300
+php_value memory_limit 256M</pre>
+            </div>
+        </section>
+
+        <!-- Testing -->
+        <section id="testing" class="mb-5">
+            <h2><span class="step-number">6</span>Testing & Verification</h2>
+            
+            <h4>🔍 Initial Testing</h4>
+            <ol>
+                <li>
+                    <strong>Access Homepage</strong>
+                    <ul>
+                        <li>Visit <code>https://yourdomain.com</code> (or subdomain)</li>
+                        <li>Should see OrderDesk homepage</li>
+                        <li>Check for any error messages</li>
+                    </ul>
+                </li>
+                
+                <li>
+                    <strong>Test Database Connection</strong>
+                    <ul>
+                        <li>Click "Login" link</li>
+                        <li>Should see login form without errors</li>
+                        <li>Try demo credentials</li>
+                    </ul>
+                </li>
+                
+                <li>
+                    <strong>Demo Login Tests</strong>
+                    <div class="info-box">
+                        <strong>Test each account:</strong>
+                        <ul class="mb-0">
+                            <li><strong>Super Admin:</strong> superadmin / password</li>
+                            <li><strong>Demo Admin:</strong> demoadmin / password</li>
+                            <li><strong>Demo Agent:</strong> demoagent / password</li>
+                        </ul>
+                    </div>
+                </li>
+            </ol>
+
+            <h4>📋 Functionality Checklist</h4>
+            <div class="row">
+                <div class="col-md-6">
+                    <h6>✅ Basic Functions</h6>
+                    <ul>
+                        <li>[ ] Homepage loads correctly</li>
+                        <li>[ ] Login system works</li>
+                        <li>[ ] Dashboard displays</li>
+                        <li>[ ] Navigation functions</li>
+                        <li>[ ] Demo data visible</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <h6>✅ Advanced Functions</h6>
+                    <ul>
+                        <li>[ ] File upload works</li>
+                        <li>[ ] CSV import functions</li>
+                        <li>[ ] Charts display</li>
+                        <li>[ ] Export features work</li>
+                        <li>[ ] Dark mode toggle</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="success-box">
+                <i class="fas fa-thumbs-up me-2"></i>
+                <strong>Success Indicators:</strong> No PHP errors, all pages load, demo accounts work, basic functionality operational.
+            </div>
+        </section>
+
+        <!-- SSL Setup -->
+        <section id="ssl-setup" class="mb-5">
+            <h2><span class="step-number">7</span>SSL Certificate Setup</h2>
+            
+            <h4>🔒 Why SSL is Important</h4>
+            <div class="warning-box">
+                <i class="fas fa-shield-alt me-2"></i>
+                SSL certificates encrypt data transmission and are essential for:
+                <ul class="mb-0">
+                    <li>Protecting user login credentials</li>
+                    <li>Securing file uploads and data</li>
+                    <li>SEO benefits and browser trust</li>
+                    <li>Professional appearance</li>
+                </ul>
+            </div>
+
+            <h4>🆓 Free SSL Options</h4>
+            <ol>
+                <li>
+                    <strong>Let's Encrypt (Most Common)</strong>
+                    <ul>
+                        <li>Available in most cPanel installations</li>
+                        <li>Go to "SSL/TLS" in cPanel</li>
+                        <li>Select "Let's Encrypt"</li>
+                        <li>Choose your domain and install</li>
+                    </ul>
+                </li>
+                
+                <li>
+                    <strong>Cloudflare Free SSL</strong>
+                    <ul>
+                        <li>Sign up for free Cloudflare account</li>
+                        <li>Add your domain to Cloudflare</li>
+                        <li>Update nameservers</li>
+                        <li>Enable SSL in Cloudflare dashboard</li>
+                    </ul>
+                </li>
+            </ol>
+
+            <h4>🔧 Force HTTPS Redirect</h4>
+            <p>Add to your .htaccess file to force HTTPS:</p>
+            <div class="code-block">
+<pre># Force HTTPS redirect
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]</pre>
+            </div>
+        </section>
+
+        <!-- Maintenance -->
+        <section id="maintenance" class="mb-5">
+            <h2><span class="step-number">8</span>Maintenance & Updates</h2>
+            
+            <h4>🔧 Regular Maintenance Tasks</h4>
+            <div class="row">
+                <div class="col-md-6">
+                    <h6>📅 Weekly Tasks</h6>
+                    <ul>
+                        <li>Check error logs</li>
+                        <li>Monitor disk space usage</li>
+                        <li>Review uploaded files</li>
+                        <li>Check user activities</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <h6>📅 Monthly Tasks</h6>
+                    <ul>
+                        <li>Database backup</li>
+                        <li>Update demo passwords</li>
+                        <li>Review user accounts</li>
+                        <li>Clean old logs/files</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h4>💾 Backup Strategy</h4>
+            <div class="info-box">
+                <strong>What to Backup:</strong>
+                <ul class="mb-0">
+                    <li><strong>Database:</strong> Complete MySQL dump via phpMyAdmin</li>
+                    <li><strong>Files:</strong> All PHP files and uploads folder</li>
+                    <li><strong>Configuration:</strong> config.php and .htaccess files</li>
+                    <li><strong>Schedule:</strong> Weekly automated backups recommended</li>
+                </ul>
+            </div>
+
+            <h4>🆙 Update Process</h4>
+            <ol>
+                <li>Create full backup before updating</li>
+                <li>Download updated OrderDesk files</li>
+                <li>Upload new files (excluding config.php)</li>
+                <li>Run any database updates if provided</li>
+                <li>Test all functionality</li>
+            </ol>
+        </section>
+
+        <!-- Troubleshooting -->
+        <section id="troubleshooting" class="mb-5">
+            <h2><span class="step-number">9</span>Troubleshooting</h2>
+            
+            <h4>🚨 Common Issues & Solutions</h4>
+            
+            <div class="accordion" id="troubleshootingAccordion">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#error1">
+                            "Connection failed" Database Error
+                        </button>
+                    </h2>
+                    <div id="error1" class="accordion-collapse collapse" data-bs-parent="#troubleshootingAccordion">
+                        <div class="accordion-body">
+                            <strong>Symptoms:</strong> White page or "Connection failed" message<br>
+                            <strong>Solutions:</strong>
+                            <ul>
+                                <li>Verify database credentials in config.php</li>
+                                <li>Check database name includes username prefix</li>
+                                <li>Ensure database user has proper privileges</li>
+                                <li>Contact hosting support for database issues</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#error2">
+                            File Upload Not Working
+                        </button>
+                    </h2>
+                    <div id="error2" class="accordion-collapse collapse" data-bs-parent="#troubleshootingAccordion">
+                        <div class="accordion-body">
+                            <strong>Symptoms:</strong> Upload fails or "Permission denied" errors<br>
+                            <strong>Solutions:</strong>
+                            <ul>
+                                <li>Set uploads/ folder permissions to 755 or 775</li>
+                                <li>Check PHP upload limits in hosting settings</li>
+                                <li>Verify uploads directory exists and is writable</li>
+                                <li>Contact hosting support for permission issues</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#error3">
+                            "500 Internal Server Error"
+                        </button>
+                    </h2>
+                    <div id="error3" class="accordion-collapse collapse" data-bs-parent="#troubleshootingAccordion">
+                        <div class="accordion-body">
+                            <strong>Symptoms:</strong> Server error page instead of OrderDesk<br>
+                            <strong>Solutions:</strong>
+                            <ul>
+                                <li>Check error logs in cPanel</li>
+                                <li>Verify .htaccess file syntax</li>
+                                <li>Ensure PHP version compatibility</li>
+                                <li>Check file permissions (should be 644 for PHP files)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#error4">
+                            Charts Not Displaying
+                        </button>
+                    </h2>
+                    <div id="error4" class="accordion-collapse collapse" data-bs-parent="#troubleshootingAccordion">
+                        <div class="accordion-body">
+                            <strong>Symptoms:</strong> Analytics pages show blank chart areas<br>
+                            <strong>Solutions:</strong>
+                            <ul>
+                                <li>Check internet connection for CDN resources</li>
+                                <li>Open browser developer tools for JavaScript errors</li>
+                                <li>Verify Chart.js library is loading</li>
+                                <li>Check if browser blocks external scripts</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h4 class="mt-4">📞 Getting Help</h4>
+            <div class="info-box">
+                <strong>Support Resources:</strong>
+                <ul class="mb-0">
+                    <li><strong>Hosting Support:</strong> Contact your hosting provider for server-related issues</li>
+                    <li><strong>Error Logs:</strong> Check cPanel error logs for detailed error messages</li>
+                    <li><strong>Documentation:</strong> Review USER_GUIDE.html for usage questions</li>
+                    <li><strong>Community:</strong> Search online forums for similar issues</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Optimization -->
+        <section id="optimization" class="mb-5">
+            <h2><span class="step-number">10</span>Performance Optimization</h2>
+            
+            <h4>⚡ Speed Optimization</h4>
+            <div class="row">
+                <div class="col-md-6">
+                    <h6>🖼️ Image Optimization</h6>
+                    <ul>
+                        <li>Compress uploaded screenshots</li>
+                        <li>Use WebP format when possible</li>
+                        <li>Implement lazy loading</li>
+                        <li>Optimize image dimensions</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <h6>📊 Database Optimization</h6>
+                    <ul>
+                        <li>Regular database cleanup</li>
+                        <li>Archive old order data</li>
+                        <li>Optimize database tables</li>
+                        <li>Monitor database size</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h4>🔧 Caching & CDN</h4>
+            <div class="code-block">
+<pre># Add to .htaccess for browser caching
+&lt;IfModule mod_expires.c&gt;
+ExpiresActive On
+ExpiresByType text/css "access plus 1 month"
+ExpiresByType application/javascript "access plus 1 month"
+ExpiresByType image/png "access plus 1 year"
+ExpiresByType image/jpg "access plus 1 year"
+ExpiresByType image/jpeg "access plus 1 year"
+&lt;/IfModule&gt;</pre>
+            </div>
+
+            <h4>📈 Monitoring & Analytics</h4>
+            <ul>
+                <li>Set up Google Analytics (optional)</li>
+                <li>Monitor server resource usage</li>
+                <li>Track application performance</li>
+                <li>Regular security scans</li>
+            </ul>
+        </section>
+
+        <!-- Security -->
+        <section class="mb-5">
+            <h2><i class="fas fa-shield-alt text-success me-2"></i>Security Best Practices</h2>
+            
+            <div class="warning-box">
+                <h5><i class="fas fa-exclamation-triangle me-2"></i>Important Security Steps</h5>
+                <ol class="mb-0">
+                    <li><strong>Change Default Passwords:</strong> Update all demo account passwords immediately</li>
+                    <li><strong>Secure config.php:</strong> Ensure proper file permissions (644)</li>
+                    <li><strong>Regular Updates:</strong> Keep PHP and hosting environment updated</li>
+                    <li><strong>Backup Security:</strong> Store backups securely, not on same server</li>
+                    <li><strong>Monitor Logs:</strong> Check access logs for suspicious activity</li>
+                    <li><strong>Strong Passwords:</strong> Enforce strong password policy for all users</li>
+                    <li><strong>HTTPS Only:</strong> Force SSL for all pages</li>
+                    <li><strong>File Permissions:</strong> Regularly audit file and folder permissions</li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- Success -->
+        <section class="mb-5">
+            <div class="success-box text-center">
+                <h3><i class="fas fa-check-circle text-success me-2"></i>Deployment Complete!</h3>
+                <p class="mb-0">
+                    Your OrderDesk installation should now be live and functional. 
+                    Test all features, change default passwords, and start managing your orders efficiently!
+                </p>
+                <div class="mt-3">
+                    <a href="USER_GUIDE.html" class="btn btn-primary me-2">
+                        <i class="fas fa-book me-2"></i>User Guide
+                    </a>
+                    <a href="README.html" class="btn btn-secondary">
+                        <i class="fas fa-info-circle me-2"></i>README
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="text-center py-4 border-top">
+            <p class="text-muted mb-0">
+                <strong>OrderDesk Deployment Guide</strong><br>
+                <small>For technical support, consult your hosting provider or review the troubleshooting section above</small>
+            </p>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
